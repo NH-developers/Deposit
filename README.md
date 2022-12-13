@@ -63,8 +63,8 @@ https://developers.nonghyup.com/DepositAmountAccountBalancesInquiry.nh
 { 
     "Header":{
        "ApiNm" : "OpenVirtualAccount",
-       "Tsymd" : "20221201“,
-       "Trtm" : "133259“,
+       "Tsymd" : "20221201",
+       "Trtm" : "133259",
        "Iscd" : "000329",
        "FintechApsno" : "003",
        "ApiSvcCd" : "TEST_API_G",
@@ -208,7 +208,7 @@ https://developers.nonghyup.com/DepositAmountAccountBalancesInquiry.nh
        "Rpcd" : "00000",
        "Rsms" : "정상 처리 되었습니다."
     },
-   	"Rgno" : "NO_1803200000042",
+    "Rgno" : "NO_1803200000042",
     "Tram" : "100"
 }
 ```
@@ -325,7 +325,6 @@ https://developers.nonghyup.com/DepositAmountAccountBalancesInquiry.nh
 
 ### 3.6.1 결제대금 지급요청 결과확인 Request example
 ```json
-Request example
 {
     "Header" : {
        "ApiNm" : "CheckPaymentPayoutReceivedTransfer",
