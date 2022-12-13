@@ -1,0 +1,843 @@
+{
+	"swagger": "2.0",
+	"schemes" : ["https"],
+	"host": "developers.nonghyup.com",
+	"tags": [
+		{
+			"name": "6.예치금관리"
+		}
+	],
+	"paths": {
+		"/OpenVirtualAccount.nh": {
+			"post": {
+				"tags": [
+					"6.예치금관리"
+				],
+				"summary": "예치금 가상계좌 발급",
+				"description": "핀테크기업이 고객에게 부여하기 위해 가상계좌 발급을 요청한다.",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "param",
+						"description": "param",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/OpenVirtualAccountRequestData"
+						}
+					}
+				],
+				"responses": {},
+				"deprecated": false
+			}
+		},
+		"/VirtualAccountReceivedListInquiry.nh": {
+			"post": {
+				"tags": [
+					"6.예치금관리"
+				],
+				"summary": "가상계좌 입금내역 조회",
+				"description": "가상계좌의 입금내역을 조회한다.",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "param",
+						"description": "param",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/VirtualAccountReceivedListInquiryRequestData"
+						}
+					}
+				],
+				"responses": {},
+				"deprecated": false
+			}
+		},
+		"PaymentPayoutAccountTransfer.nh": {
+			"post": {
+				"tags": [
+					"6.예치금관리"
+				],
+				"summary": "결제대금 지급계좌 이체요청",
+				"description": "결제대금 지급을 위해 농협 예치계좌에서 기관 약정계좌로 입금한다.",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "param",
+						"description": "param",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/PaymentPayoutAccountTransferRequestData"
+						}
+					}
+				],
+				"responses": {},
+				"deprecated": false
+			}
+		},
+		"CheckPaymentPayoutAccountTransfer.nh": {
+			"post": {
+				"tags": [
+					"6.예치금관리"
+				],
+				"summary": "결제대금 지급계좌 이체요청 결과확인",
+				"description": "결제대금 지급계좌 이체요청에 대한 결과를 확인한다.",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "param",
+						"description": "param",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CheckPaymentPayoutAccountTransferRequestData"
+						}
+					}
+				],
+				"responses": {},
+				"deprecated": false
+			}
+		},
+		"PaymentPayoutReceivedTransfer.nh": {
+			"post": {
+				"tags": [
+					"6.예치금관리"
+				],
+				"summary": "결제대금 지급요청",
+				"description": "결제대금 지급을 위해 기관 약정계좌에서 고객 계좌로 이체한다.",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "param",
+						"description": "param",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/PaymentPayoutReceivedTransferRequestData"
+						}
+					}
+				],
+				"responses": {},
+				"deprecated": false
+			}
+		},
+		"CheckPaymentPayoutReceivedTransfer.nh": {
+			"post": {
+				"tags": [
+					"6.예치금관리"
+				],
+				"summary": "결제대금 지급요청 결과확인",
+				"description": "결제대금 지급요청에 대한 결과를 확인한다.",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "param",
+						"description": "param",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CheckPaymentPayoutReceivedTransferRequestData"
+						}
+					}
+				],
+				"responses": {},
+				"deprecated": false
+			}
+		},
+		"DepositAmountAccountBalancesInquiry.nh": {
+			"post": {
+				"tags": [
+					"6.예치금관리"
+				],
+				"summary": "예치금 잔액조회",
+				"description": "농협 예치계좌의 예치금 잔액을 조회한다.",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "param",
+						"description": "param",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/DepositAmountAccountBalancesInquiryRequestData"
+						}
+					}
+				],
+				"responses": {},
+				"deprecated": false
+			}
+		}
+	},
+	"definitions": {
+		"OpenVirtualAccountRequestData": {
+			"type": "object",
+			"required": [
+				"Header",
+				"Dpnm",
+				"MnrcClamt",
+				"MnrcClsnDt"
+			],
+			"properties": {
+				"Header": {
+					"$ref": "#/definitions/OpenVirtualAccountRequestDataHeader"
+				},
+				"Dpnm": {
+					"type": "string",
+					"example": "예금주명을입력하세요",
+					"description": "예금주명"
+				},
+				"MnrcClamt": {
+					"type": "string",
+					"example": "",
+					"description": "입금마감금액"
+				},
+				"MnrcClsnDt": {
+					"type": "string",
+					"example": "",
+					"description": "입금마감일시"
+				}
+			},
+			"title": "OpenVirtualAccountRequestData"
+		},
+		"OpenVirtualAccountRequestDataHeader": {
+			"type": "object",
+			"required": [
+				"AccessToken",
+				"ApiNm",
+				"ApiSvcCd",
+				"FintechApsno",
+				"IsTuno",
+				"Iscd",
+				"Trtm",
+				"Tsymd"
+			],
+			"properties": {
+				"ApiNm": {
+					"type": "string",
+					"example": "OpenVirtualAccount",
+					"description": "API명"
+				},
+				"Tsymd": {
+					"type": "string",
+					"example": "오늘날짜를입력하세요",
+					"description": "전송일자"
+				},
+				"Trtm": {
+					"type": "string",
+					"example": "112428",
+					"description": "전송시각"
+				},
+				"Iscd": {
+					"type": "string",
+					"example": "기관코드를입력하세요",
+					"description": "기관코드"
+				},
+				"FintechApsno": {
+					"type": "string",
+					"example": "003",
+					"description": "핀테크앱일련번호"
+				},
+				"ApiSvcCd": {
+					"type": "string",
+					"example": "TEST_API_G",
+					"description": "API서비스코드"
+				},
+				"IsTuno": {
+					"type": "string",
+					"example": "0000",
+					"description": "기관 거래고유번호"
+				},
+				"AccessToken": {
+					"type": "string",
+					"example": "인증키를입력하세요",
+					"description": "접근토큰"
+				}
+			},
+			"title": "OpenVirtualAccountRequestDataHeader",
+			"description": "공통부"
+		},
+		"VirtualAccountReceivedListInquiryRequestData": {
+			"type": "object",
+			"required": [
+				"Header",
+				"Insymd",
+				"Ineymd",
+				"Vran",
+				"Lnsq",
+				"PageNo"
+			],
+			"properties": {
+				"Header": {
+					"$ref": "#/definitions/VirtualAccountReceivedListInquiryRequestDataHeader"
+				},
+				"Insymd": {
+					"type": "string",
+					"example": "조회시작일자를입력하세요",
+					"description": "조회시작일자"
+				},
+				"Ineymd": {
+					"type": "string",
+					"example": "조회종료일자를입력하세요",
+					"description": "조회종료일자"
+				},
+				"Vran": {
+					"type": "string",
+					"example": "가상계좌번호",
+					"description": "가상계좌번호"
+				},
+				"Lnsq": {
+					"type": "string",
+					"example": "DESC",
+					"description": "정렬순서"
+				},
+				"PageNo": {
+					"type": "string",
+					"example": "1",
+					"description": "페이지번호"
+				}
+			},
+			"title": "VirtualAccountReceivedListInquiryRequestData"
+		},
+		"VirtualAccountReceivedListInquiryRequestDataHeader": {
+			"type": "object",
+			"required": [
+				"AccessToken",
+				"ApiNm",
+				"ApiSvcCd",
+				"FintechApsno",
+				"IsTuno",
+				"Iscd",
+				"Trtm",
+				"Tsymd"
+			],
+			"properties": {
+				"ApiNm": {
+					"type": "string",
+					"example": "VirtualAccountReceivedListInquiry",
+					"description": "API명"
+				},
+				"Tsymd": {
+					"type": "string",
+					"example": "오늘날짜를입력하세요",
+					"description": "전송일자"
+				},
+				"Trtm": {
+					"type": "string",
+					"example": "112428",
+					"description": "전송시각"
+				},
+				"Iscd": {
+					"type": "string",
+					"example": "기관코드를입력하세요",
+					"description": "기관코드"
+				},
+				"FintechApsno": {
+					"type": "string",
+					"example": "011",
+					"description": "핀테크앱일련번호"
+				},
+				"ApiSvcCd": {
+					"type": "string",
+					"example": "10B_001_00",
+					"description": "API서비스코드"
+				},
+				"IsTuno": {
+					"type": "string",
+					"example": "0000",
+					"description": "기관 거래고유번호"
+				},
+				"AccessToken": {
+					"type": "string",
+					"example": "인증키를입력하세요",
+					"description": "접근토큰"
+				}
+			},
+			"title": "VirtualAccountReceivedListInquiryRequestDataHeader",
+			"description": "공통부"
+		},
+		"PaymentPayoutAccountTransferRequestData": {
+			"type": "object",
+			"required": [
+				"Header",
+				"Tram",
+				"Acno"
+			],
+			"properties": {
+				"Header": {
+					"$ref": "#/definitions/PaymentPayoutAccountTransferRequestDataHeader"
+				},
+				"Tram": {
+					"type": "string",
+					"example": "거래금액",
+					"description": "거래금액"
+				},
+				"Acno": {
+					"type": "string",
+					"example": "계좌번호를입력하세요",
+					"description": "계좌번호"
+				}
+			},
+			"title": "PaymentPayoutAccountTransferRequestData"
+		},
+		"PaymentPayoutAccountTransferRequestDataHeader": {
+			"type": "object",
+			"required": [
+				"AccessToken",
+				"ApiNm",
+				"ApiSvcCd",
+				"FintechApsno",
+				"IsTuno",
+				"Iscd",
+				"Trtm",
+				"Tsymd"
+			],
+			"properties": {
+				"ApiNm": {
+					"type": "string",
+					"example": "PaymentPayoutAccountTransfer",
+					"description": "API명"
+				},
+				"Tsymd": {
+					"type": "string",
+					"example": "오늘날짜를입력하세요",
+					"description": "전송일자"
+				},
+				"Trtm": {
+					"type": "string",
+					"example": "112428",
+					"description": "전송시각"
+				},
+				"Iscd": {
+					"type": "string",
+					"example": "기관코드를입력하세요",
+					"description": "기관코드"
+				},
+				"FintechApsno": {
+					"type": "string",
+					"example": "011",
+					"description": "핀테크앱일련번호"
+				},
+				"ApiSvcCd": {
+					"type": "string",
+					"example": "10B_002_00",
+					"description": "API서비스코드"
+				},
+				"IsTuno": {
+					"type": "string",
+					"example": "0000",
+					"description": "기관 거래고유번호"
+				},
+				"AccessToken": {
+					"type": "string",
+					"example": "인증키를입력하세요",
+					"description": "접근토큰"
+				}
+			},
+			"title": "PaymentPayoutAccountTransferRequestDataHeader",
+			"description": "공통부"
+		},
+		"CheckPaymentPayoutAccountTransferRequestData": {
+			"type": "object",
+			"required": [
+				"Header",
+				"OrtrYmd",
+				"OrtrIsTuno",
+				"Tram"
+			],
+			"properties": {
+				"Header": {
+					"$ref": "#/definitions/CheckPaymentPayoutAccountTransferRequestDataHeader"
+				},
+				"OrtrYmd": {
+					"type": "string",
+					"example": "원거래일자",
+					"description": "원거래일자"
+				},
+				"OrtrIsTuno": {
+					"type": "string",
+					"example": "원거래기관거래고유번호",
+					"description": "원거래기관거래고유번호"
+				},
+				"Tram": {
+					"type": "string",
+					"example": "거래금액",
+					"description": "거래금액"
+				}
+			},
+			"title": "CheckPaymentPayoutAccountTransferRequestData"
+		},
+		"CheckPaymentPayoutAccountTransferRequestDataHeader": {
+			"type": "object",
+			"required": [
+				"AccessToken",
+				"ApiNm",
+				"ApiSvcCd",
+				"FintechApsno",
+				"IsTuno",
+				"Iscd",
+				"Trtm",
+				"Tsymd"
+			],
+			"properties": {
+				"ApiNm": {
+					"type": "string",
+					"example": "CheckPaymentPayoutAccountTransfer",
+					"description": "API명"
+				},
+				"Tsymd": {
+					"type": "string",
+					"example": "오늘날짜를입력하세요",
+					"description": "전송일자"
+				},
+				"Trtm": {
+					"type": "string",
+					"example": "112428",
+					"description": "전송시각"
+				},
+				"Iscd": {
+					"type": "string",
+					"example": "기관코드를입력하세요",
+					"description": "기관코드"
+				},
+				"FintechApsno": {
+					"type": "string",
+					"example": "011",
+					"description": "핀테크앱일련번호"
+				},
+				"ApiSvcCd": {
+					"type": "string",
+					"example": "10B_002_00",
+					"description": "API서비스코드"
+				},
+				"IsTuno": {
+					"type": "string",
+					"example": "0000",
+					"description": "기관 거래고유번호"
+				},
+				"AccessToken": {
+					"type": "string",
+					"example": "인증키를입력하세요",
+					"description": "접근토큰"
+				}
+			},
+			"title": "CheckPaymentPayoutAccountTransferRequestDataHeader",
+			"description": "공통부"
+		},
+		"PaymentPayoutReceivedTransferRequestData": {
+			"type": "object",
+			"required": [
+				"Header",
+				"Rgno",
+				"Tram",
+				"Bncd",
+				"Acno",
+				"DractOtlt",
+				"MractOtlt"
+			],
+			"properties": {
+				"Header": {
+					"$ref": "#/definitions/PaymentPayoutReceivedTransferRequestDataHeader"
+				},
+				"Rgno": {
+					"type": "string",
+					"example": "등록번호를입력하세요",
+					"description": "등록번호"
+				},
+				"Tram": {
+					"type": "string",
+					"example": "거래금액",
+					"description": "거래금액"
+				},
+				"Bncd": {
+					"type": "string",
+					"example": "은행코드",
+					"description": "은행코드"
+				},
+				"Acno": {
+					"type": "string",
+					"example": "계좌번호를입력하세요",
+					"description": "계좌번호"
+				},
+				"DractOtlt": {
+					"type": "string",
+					"example": "출금계좌인자내용",
+					"description": "출금계좌인자내용"
+				},
+				"MractOtlt": {
+					"type": "string",
+					"example": "입금계좌인자내용",
+					"description": "입금계좌인자내용"
+				}
+			},
+			"title": "PaymentPayoutReceivedTransferRequestData"
+		},
+		"PaymentPayoutReceivedTransferRequestDataHeader": {
+			"type": "object",
+			"required": [
+				"AccessToken",
+				"ApiNm",
+				"ApiSvcCd",
+				"FintechApsno",
+				"IsTuno",
+				"Iscd",
+				"Trtm",
+				"Tsymd"
+			],
+			"properties": {
+				"ApiNm": {
+					"type": "string",
+					"example": "PaymentPayoutReceivedTransfer",
+					"description": "API명"
+				},
+				"Tsymd": {
+					"type": "string",
+					"example": "오늘날짜를입력하세요",
+					"description": "전송일자"
+				},
+				"Trtm": {
+					"type": "string",
+					"example": "112428",
+					"description": "전송시각"
+				},
+				"Iscd": {
+					"type": "string",
+					"example": "기관코드를입력하세요",
+					"description": "기관코드"
+				},
+				"FintechApsno": {
+					"type": "string",
+					"example": "011",
+					"description": "핀테크앱일련번호"
+				},
+				"ApiSvcCd": {
+					"type": "string",
+					"example": "10B_003_00",
+					"description": "API서비스코드"
+				},
+				"IsTuno": {
+					"type": "string",
+					"example": "0000",
+					"description": "기관 거래고유번호"
+				},
+				"AccessToken": {
+					"type": "string",
+					"example": "인증키를입력하세요",
+					"description": "접근토큰"
+				}
+			},
+			"title": "PaymentPayoutReceivedTransferRequestDataHeader",
+			"description": "공통부"
+		},
+		"CheckPaymentPayoutReceivedTransferRequestData": {
+			"type": "object",
+			"required": [
+				"Header",
+				"OrtrYmd",
+				"OrtrIsTuno",
+				"Rgno",
+				"Tram",
+				"Bncd",
+				"Acno"
+			],
+			"properties": {
+				"Header": {
+					"$ref": "#/definitions/CheckPaymentPayoutReceivedTransferRequestDataHeader"
+				},
+				"OrtrYmd": {
+					"type": "string",
+					"example": "원거래일자",
+					"description": "원거래일자"
+				},
+				"OrtrIsTuno": {
+					"type": "string",
+					"example": "원거래기관거래고유번호",
+					"description": "원거래기관거래고유번호"
+				},
+				"Rgno": {
+					"type": "string",
+					"example": "등록번호를입력하세요",
+					"description": "등록번호"
+				},
+				"Tram": {
+					"type": "string",
+					"example": "거래금액",
+					"description": "거래금액"
+				},
+				"Bncd": {
+					"type": "string",
+					"example": "은행코드",
+					"description": "은행코드"
+				},
+				"Acno": {
+					"type": "string",
+					"example": "계좌번호를입력하세요",
+					"description": "계좌번호"
+				}
+			},
+			"title": "CheckPaymentPayoutReceivedTransferRequestData"
+		},
+		"CheckPaymentPayoutReceivedTransferRequestDataHeader": {
+			"type": "object",
+			"required": [
+				"AccessToken",
+				"ApiNm",
+				"ApiSvcCd",
+				"FintechApsno",
+				"IsTuno",
+				"Iscd",
+				"Trtm",
+				"Tsymd"
+			],
+			"properties": {
+				"ApiNm": {
+					"type": "string",
+					"example": "CheckPaymentPayoutReceivedTransfer",
+					"description": "API명"
+				},
+				"Tsymd": {
+					"type": "string",
+					"example": "오늘날짜를입력하세요",
+					"description": "전송일자"
+				},
+				"Trtm": {
+					"type": "string",
+					"example": "112428",
+					"description": "전송시각"
+				},
+				"Iscd": {
+					"type": "string",
+					"example": "기관코드를입력하세요",
+					"description": "기관코드"
+				},
+				"FintechApsno": {
+					"type": "string",
+					"example": "011",
+					"description": "핀테크앱일련번호"
+				},
+				"ApiSvcCd": {
+					"type": "string",
+					"example": "10B_003_00",
+					"description": "API서비스코드"
+				},
+				"IsTuno": {
+					"type": "string",
+					"example": "0000",
+					"description": "기관 거래고유번호"
+				},
+				"AccessToken": {
+					"type": "string",
+					"example": "인증키를입력하세요",
+					"description": "접근토큰"
+				}
+			},
+			"title": "CheckPaymentPayoutReceivedTransferRequestDataHeader",
+			"description": "공통부"
+		},
+		"DepositAmountAccountBalancesInquiryRequestData": {
+			"type": "object",
+			"required": [
+				"Header"
+			],
+			"properties": {
+				"Header": {
+					"$ref": "#/definitions/DepositAmountAccountBalancesInquiryRequestDataHeader"
+				}
+			},
+			"title": "DepositAmountAccountBalancesInquiryRequestData"
+		},
+		"DepositAmountAccountBalancesInquiryRequestDataHeader": {
+			"type": "object",
+			"required": [
+				"AccessToken",
+				"ApiNm",
+				"ApiSvcCd",
+				"FintechApsno",
+				"IsTuno",
+				"Iscd",
+				"Trtm",
+				"Tsymd"
+			],
+			"properties": {
+				"ApiNm": {
+					"type": "string",
+					"example": "DepositAmountAccountBalancesInquiry",
+					"description": "API명"
+				},
+				"Tsymd": {
+					"type": "string",
+					"example": "오늘날짜를입력하세요",
+					"description": "전송일자"
+				},
+				"Trtm": {
+					"type": "string",
+					"example": "112428",
+					"description": "전송시각"
+				},
+				"Iscd": {
+					"type": "string",
+					"example": "기관코드를입력하세요",
+					"description": "기관코드"
+				},
+				"FintechApsno": {
+					"type": "string",
+					"example": "011",
+					"description": "핀테크앱일련번호"
+				},
+				"ApiSvcCd": {
+					"type": "string",
+					"example": "10B_004_00",
+					"description": "API서비스코드"
+				},
+				"IsTuno": {
+					"type": "string",
+					"example": "0000",
+					"description": "기관 거래고유번호"
+				},
+				"AccessToken": {
+					"type": "string",
+					"example": "인증키를입력하세요",
+					"description": "접근토큰"
+				}
+			},
+			"title": "DepositAmountAccountBalancesInquiryRequestDataHeader",
+			"description": "공통부"
+		}
+	}
+}
